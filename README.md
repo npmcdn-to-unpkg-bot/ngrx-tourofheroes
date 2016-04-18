@@ -3,6 +3,12 @@
 Angular2 Tour of Heroes tutorial using ngrx for store, reducers,
 etc.
 
+## Differences from tutorial
+
+- Single quotes and a const for the dummy data
+
+- Organize files as subcomponents per directory
+
 ## See Also
 
 - https://github.com/ngrx/store

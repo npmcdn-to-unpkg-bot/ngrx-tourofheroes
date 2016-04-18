@@ -1,6 +1,6 @@
 import {Reducer} from '@ngrx/store';
 
-import {Hero} from '../hero/hero';
+import {Hero} from 'hero/hero';
 export interface AppStore {
     heroes: Array<Hero>;
 }

@@ -47,7 +47,6 @@ System.register(['angular2/core', 'angular2/router', '../hero/hero', '../hero/he
                 ], HeroDetailComponent.prototype, "hero", void 0);
                 HeroDetailComponent = __decorate([
                     core_1.Component({
-                        selector: 'my-hero-detail',
                         templateUrl: 'src/hero-detail/hero-detail.component.html',
                         styleUrls: ['src/hero-detail/hero-detail.component.css']
                     }), 

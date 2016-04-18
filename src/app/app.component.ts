@@ -1,10 +1,18 @@
-import { Component } from 'angular2/core';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
+import {Component} from 'angular2/core';
+import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
 
-import { HeroService } from '../hero/hero.service';
-import { DashboardComponent } from '../dashboard/dashboard.component';
-import { HeroesComponent } from '../heroes/heroes.component';
-import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs/Observable';
+
+import {INCREMENT, AppStore, Hero} from './store';
+
+let currentId = 0;
+
+
+import {HeroService} from '../hero/hero.service';
+import {DashboardComponent} from '../dashboard/dashboard.component';
+import {HeroesComponent} from '../heroes/heroes.component';
+import {HeroDetailComponent} from '../hero-detail/hero-detail.component';
 
 @Component({
     selector: 'my-app',
@@ -43,6 +51,12 @@ import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 ])
 export class AppComponent {
     title = 'Tour of Heroes';
+    public heroes: Observable<Array<Hero>>;
+
+    constructor(public store: Store<AppStore>) {
+        this.heroes = store.select('heroes');
+    }
+
 }
 
 

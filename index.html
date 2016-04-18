@@ -27,9 +27,7 @@
                     format: 'cjs'
                 }
             },
-            map: {
-                '@ngrx/store': 'node_modules/@ngrx/store/dist'
-            }
+            map: {'@ngrx/store': 'node_modules/@ngrx/store/dist'}
         });
         System.import('src/main')
                 .then(null, console.error.bind(console));

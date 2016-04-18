@@ -1,7 +1,12 @@
 import {bootstrap}    from 'angular2/platform/browser';
+import {provideStore} from '@ngrx/store';
+
+import {heroes} from './app/store';
 import {AppComponent} from './app/app.component';
 
-bootstrap(AppComponent);
+bootstrap(AppComponent, [
+    provideStore({heroes}, {heroes: []})
+]).catch(err => console.error(err));
 
 /*
  Copyright 2016 Google Inc. All Rights Reserved.

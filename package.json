@@ -2,7 +2,7 @@
   "name": "ngrx-tourofheroes",
   "version": "0.0.1",
   "description": "Angular2 Tour of Heroes tutorial using ngrx for store, reducers,",
-  "main": "src/main.tx",
+  "main": "src/main.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -9,7 +9,8 @@
     "tsc:w": "tsc -w",
     "lite": "lite-server",
     "typings": "typings",
-    "postinstall": "typings install"
+    "postinstall": "typings install",
+    "lint": "tslint src/**.ts"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,7 @@
   "devDependencies": {
     "concurrently": "^2.0.0",
     "lite-server": "^2.2.0",
+    "tslint": "^3.7.4",
     "typescript": "^1.8.10",
     "typings": "^0.7.12"
   }

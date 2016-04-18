@@ -21,9 +21,9 @@
         System.config({
             transpiler: 'typescript',
             typescriptOptions: {emitDecoratorMetadata: true},
-            packages: {'app': {defaultExtension: 'ts'}}
+            packages: {'src': {defaultExtension: 'ts'}}
         });
-        System.import('app/main')
+        System.import('src/main')
                 .then(null, console.error.bind(console));
     </script>
 </head>

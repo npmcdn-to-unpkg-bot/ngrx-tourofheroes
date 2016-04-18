@@ -7,7 +7,7 @@ etc.
 
 - Single quotes and a const for the dummy data
 
-- Organize files as subcomponents per directory
+- Organize files as subcomponents per directory under src instead of app
 
 ## See Also
 

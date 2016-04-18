@@ -4,7 +4,12 @@
   "description": "Angular2 Tour of Heroes tutorial using ngrx for store, reducers,",
   "main": "src/main.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "lite": "lite-server",
+    "typings": "typings",
+    "postinstall": "typings install"
   },
   "repository": {
     "type": "git",
@@ -21,5 +26,19 @@
   "bugs": {
     "url": "https://github.com/pauleveritt/ngrx-tourofheroes/issues"
   },
-  "homepage": "https://github.com/pauleveritt/ngrx-tourofheroes#readme"
+  "homepage": "https://github.com/pauleveritt/ngrx-tourofheroes#readme",
+  "dependencies": {
+    "angular2": "^2.0.0-beta.15",
+    "systemjs": "^0.19.26",
+    "es6-shim": "^0.35.0",
+    "reflect-metadata": "^0.1.2",
+    "rxjs": "^5.0.0-beta.2",
+    "zone.js": "^0.6.10"
+  },
+  "devDependencies": {
+    "concurrently": "^2.0.0",
+    "lite-server": "^2.2.0",
+    "typescript": "^1.8.10",
+    "typings": "^0.7.12"
+  }
 }

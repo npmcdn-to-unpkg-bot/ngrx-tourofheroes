@@ -1,4 +1,4 @@
-import {bootstrap}    from 'angular2/platform/browser';
+import {bootstrap} from 'angular2/platform/browser';
 import {provideStore} from '@ngrx/store';
 
 import {heroes} from './store';

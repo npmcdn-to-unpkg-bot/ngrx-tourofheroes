@@ -1,4 +1,4 @@
-System.register(['./mock-heroes', 'angular2/core'], function(exports_1, context_1) {
+System.register(['./mock-heroes', 'angular2/core', '@ngrx/store'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['./mock-heroes', 'angular2/core'], function(exports_1, context_
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var mock_heroes_1, core_1;
+    var mock_heroes_1, core_1, store_1;
     var HeroService;
     return {
         setters:[
@@ -19,10 +19,15 @@ System.register(['./mock-heroes', 'angular2/core'], function(exports_1, context_
             },
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (store_1_1) {
+                store_1 = store_1_1;
             }],
         execute: function() {
             HeroService = (function () {
-                function HeroService() {
+                function HeroService(store) {
+                    this.store = store;
+                    this.heroes = store.select('heroes');
                 }
                 HeroService.prototype.getHeroes = function () {
                     return Promise.resolve(mock_heroes_1.HEROES);
@@ -40,7 +45,7 @@ System.register(['./mock-heroes', 'angular2/core'], function(exports_1, context_
                 };
                 HeroService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [store_1.Store])
                 ], HeroService);
                 return HeroService;
             }());

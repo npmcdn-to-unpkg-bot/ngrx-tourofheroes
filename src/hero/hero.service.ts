@@ -2,8 +2,20 @@ import {Hero} from './hero';
 import {HEROES} from './mock-heroes';
 import {Injectable} from 'angular2/core';
 
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs/Observable';
+
+import {AppStore} from '../store';
+
 @Injectable()
 export class HeroService {
+
+    heroes: Observable<Array<Hero>>;
+
+    constructor(private store: Store<AppStore>) {
+        this.heroes = store.select('heroes');
+    }
+
     getHeroes() {
         return Promise.resolve(HEROES);
     }

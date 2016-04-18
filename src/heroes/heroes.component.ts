@@ -1,6 +1,8 @@
 import {Component, OnInit} from 'angular2/core';
 import {Router} from 'angular2/router';
 
+import {Observable} from 'rxjs/Observable';
+
 import {Hero} from '../hero/hero';
 import {HeroDetailComponent} from '../hero-detail/hero-detail.component';
 import {HeroService} from '../hero/hero.service';
@@ -12,19 +14,15 @@ import {HeroService} from '../hero/hero.service';
     directives: [HeroDetailComponent]
 })
 export class HeroesComponent implements OnInit {
-    heroes: Hero[];
+    heroes: Observable<Array<Hero>>;
     selectedHero: Hero;
 
     constructor(private _router: Router,
                 private _heroService: HeroService) {
     }
 
-    getHeroes() {
-        this._heroService.getHeroes().then(heroes => this.heroes = heroes);
-    }
-
     ngOnInit() {
-        this.getHeroes();
+        this.heroes = this._heroService.heroes;
     }
 
     onSelect(hero: Hero) {

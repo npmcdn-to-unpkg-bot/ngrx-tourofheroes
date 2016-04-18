@@ -5,7 +5,7 @@ import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs/Observable';
 
 import {AppStore} from '../store';
-import {Hero} from 'hero/hero';
+import {Hero} from '../hero/hero';
 
 import {HeroService} from '../hero/hero.service';
 import {DashboardComponent} from '../dashboard/dashboard.component';

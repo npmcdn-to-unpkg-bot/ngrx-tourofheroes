@@ -3,7 +3,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
 
 import { HeroService } from './hero.service';
 import { DashboardComponent } from './dashboard.component';
-import { HeroesComponent } from './heroes.component';
+import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 
 @Component({

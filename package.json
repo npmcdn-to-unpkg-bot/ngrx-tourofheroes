@@ -1,0 +1,25 @@
+{
+  "name": "ngrx-tourofheroes",
+  "version": "0.0.1",
+  "description": "Angular2 Tour of Heroes tutorial using ngrx for store, reducers,",
+  "main": "src/main.tx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pauleveritt/ngrx-tourofheroes.git"
+  },
+  "keywords": [
+    "angular2",
+    "tutorial",
+    "ngrx",
+    "redux"
+  ],
+  "author": "Paul Everitt <pauleveritt@me.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pauleveritt/ngrx-tourofheroes/issues"
+  },
+  "homepage": "https://github.com/pauleveritt/ngrx-tourofheroes#readme"
+}

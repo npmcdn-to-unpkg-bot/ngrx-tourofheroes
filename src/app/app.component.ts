@@ -4,12 +4,14 @@ import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router'
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs/Observable';
 
-import {AppStore, Hero} from '../store';
+import {AppStore} from '../store';
+import {Hero} from 'hero/hero';
 
 import {HeroService} from '../hero/hero.service';
 import {DashboardComponent} from '../dashboard/dashboard.component';
 import {HeroesComponent} from '../heroes/heroes.component';
 import {HeroDetailComponent} from '../hero-detail/hero-detail.component';
+
 
 @Component({
     selector: 'my-app',

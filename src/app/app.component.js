@@ -11,7 +11,7 @@ System.register(['angular2/core', 'angular2/router', '@ngrx/store', '../hero/her
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, router_1, store_1, hero_service_1, dashboard_component_1, heroes_component_1, hero_detail_component_1;
-    var currentId, AppComponent;
+    var AppComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -36,7 +36,6 @@ System.register(['angular2/core', 'angular2/router', '@ngrx/store', '../hero/her
                 hero_detail_component_1 = hero_detail_component_1_1;
             }],
         execute: function() {
-            currentId = 0;
             AppComponent = (function () {
                 function AppComponent(store) {
                     this.store = store;

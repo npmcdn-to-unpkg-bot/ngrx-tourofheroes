@@ -14,9 +14,19 @@ export class HeroService {
     selectedHero: Observable<Hero>;
 
     constructor(private store: Store<AppStore>) {
+        this.store = store;
         this.heroes = store.select('heroes');
         this.selectedHero = store.select('selectedHero');
-        this.store.dispatch({type: ADD_ITEMS, payload: HEROES});
+        this.store.dispatch({ type: ADD_ITEMS, payload: HEROES });
+    }
+
+    setSelectedHero(id: number) {
+        // const selectedItem = this.heroes.filter(item => item['id'] !== id);
+        const selectedHero = { id: 11, name: 'Bogus' };
+        this.store.dispatch({
+            type: SELECT_HERO,
+            payload: [selectedHero]
+        });
     }
 }
 

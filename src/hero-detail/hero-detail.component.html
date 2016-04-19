@@ -1,8 +1,7 @@
-<pre>x: {{getHero() | async}}</pre>
 <div *ngIf="hero | async">
-    <h2>{{hero.name}} details!</h2>
+    <h2>{{hero.name | async}} details!</h2>
     <div>
-        <label>id: </label>{{hero.id}}</div>
+        <label>id: </label>{{hero.id | async}}</div>
     <div>
         <label>name: </label>
         <input [(ngModel)]="hero.name" placeholder="name" />

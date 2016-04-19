@@ -30,10 +30,19 @@ System.register(['./mock-heroes', 'angular2/core', '@ngrx/store', '../store'], f
             HeroService = (function () {
                 function HeroService(store) {
                     this.store = store;
+                    this.store = store;
                     this.heroes = store.select('heroes');
                     this.selectedHero = store.select('selectedHero');
                     this.store.dispatch({ type: store_2.ADD_ITEMS, payload: mock_heroes_1.HEROES });
                 }
+                HeroService.prototype.setSelectedHero = function (id) {
+                    // const selectedItem = this.heroes.filter(item => item['id'] !== id);
+                    var selectedHero = { id: 11, name: 'Bogus' };
+                    this.store.dispatch({
+                        type: store_2.SELECT_HERO,
+                        payload: [selectedHero]
+                    });
+                };
                 HeroService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [store_1.Store])

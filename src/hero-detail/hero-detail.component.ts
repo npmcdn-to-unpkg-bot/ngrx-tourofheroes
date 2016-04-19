@@ -1,25 +1,35 @@
-import { Component, Input, OnInit } from 'angular2/core';
-import { RouteParams } from 'angular2/router';
-
-import { Hero } from '../hero/hero';
-import { HeroService } from '../hero/hero.service';
+import {Component, OnInit} from 'angular2/core';
+import {RouteParams} from 'angular2/router';
+import {Hero} from '../hero/hero';
+import {HeroService} from '../hero/hero.service';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs/Observable';
+import {AppStore} from '../store';
 
 @Component({
     templateUrl: 'src/hero-detail/hero-detail.component.html',
     styleUrls: ['src/hero-detail/hero-detail.component.css']
 })
 export class HeroDetailComponent implements OnInit {
-    @Input() hero: Hero;
+    hero: Observable<Hero>;
 
-    constructor(
-        private _heroService: HeroService,
-        private _routeParams: RouteParams) {
+    constructor(private _heroService: HeroService,
+                private _routeParams: RouteParams,
+                private store: Store<AppStore>) {
+        this.hero = store.select('selectedHero');
     }
 
     ngOnInit() {
         let id = +this._routeParams.get('id');
-        this._heroService.getHero(id)
-            .then(hero => this.hero = hero);
+        this.store.dispatch({
+            type: 'SELECT_HERO',
+            payload: {
+                id: 99, name: 'Yowza'
+            }
+        });
+
+        // this._heroService.getHero(id)
+        //     .then(hero => this.hero = hero);
     }
 
     goBack() {

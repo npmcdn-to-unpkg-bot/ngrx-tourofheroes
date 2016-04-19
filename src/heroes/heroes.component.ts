@@ -1,4 +1,4 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, ChangeDetectionStrategy, OnInit} from 'angular2/core';
 import {Router} from 'angular2/router';
 
 import {Observable} from 'rxjs/Observable';
@@ -11,7 +11,8 @@ import {HeroService} from '../hero/hero.service';
     selector: 'my-heroes',
     templateUrl: 'src/heroes/heroes.component.html',
     styleUrls: ['src/heroes/heroes.component.css'],
-    directives: [HeroDetailComponent]
+    directives: [HeroDetailComponent],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeroesComponent implements OnInit {
     heroes: Observable<Array<Hero>>;

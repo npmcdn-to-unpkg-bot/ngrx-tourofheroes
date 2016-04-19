@@ -1,4 +1,4 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, ChangeDetectionStrategy, OnInit} from 'angular2/core';
 import {RouteParams} from 'angular2/router';
 import {Hero} from '../hero/hero';
 import {HeroService} from '../hero/hero.service';
@@ -8,7 +8,8 @@ import {AppStore} from '../store';
 
 @Component({
     templateUrl: 'src/hero-detail/hero-detail.component.html',
-    styleUrls: ['src/hero-detail/hero-detail.component.css']
+    styleUrls: ['src/hero-detail/hero-detail.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeroDetailComponent implements OnInit {
     hero: Observable<Hero>;

@@ -1,11 +1,11 @@
 import {bootstrap} from 'angular2/platform/browser';
 import {provideStore} from '@ngrx/store';
 
-import {heroes} from './store';
+import {heroes, selectedHero} from './store';
 import {AppComponent} from './app/app.component';
 
 bootstrap(AppComponent, [
-    provideStore({heroes}, {heroes: []})
+    provideStore({heroes, selectedHero}, {heroes: []})
 ]).catch(err => console.error(err));
 
 /*

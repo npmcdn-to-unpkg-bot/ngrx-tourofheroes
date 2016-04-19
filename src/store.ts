@@ -18,3 +18,13 @@ export const heroes: Reducer<Hero> = (state: any = [], { type, payload }) => {
             return state;
     }
 };
+
+export const selectedHero = (state: any = null, {type, payload}) => {
+    switch (type) {
+        case 'SELECT_HERO':
+            console.log('Selected Here', type, payload);
+            return payload;
+        default:
+            return state;
+    }
+};

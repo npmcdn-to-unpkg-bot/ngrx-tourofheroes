@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../hero/hero', '../hero/hero.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../hero/hero.service', '@ngrx/store'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', '../hero/hero', '../hero/he
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, hero_1, hero_service_1;
+    var core_1, router_1, hero_service_1, store_1;
     var HeroDetailComponent;
     return {
         setters:[
@@ -20,37 +20,40 @@ System.register(['angular2/core', 'angular2/router', '../hero/hero', '../hero/he
             function (router_1_1) {
                 router_1 = router_1_1;
             },
-            function (hero_1_1) {
-                hero_1 = hero_1_1;
-            },
             function (hero_service_1_1) {
                 hero_service_1 = hero_service_1_1;
+            },
+            function (store_1_1) {
+                store_1 = store_1_1;
             }],
         execute: function() {
             HeroDetailComponent = (function () {
-                function HeroDetailComponent(_heroService, _routeParams) {
+                function HeroDetailComponent(_heroService, _routeParams, store) {
                     this._heroService = _heroService;
                     this._routeParams = _routeParams;
+                    this.store = store;
+                    this.hero = store.select('selectedHero');
                 }
                 HeroDetailComponent.prototype.ngOnInit = function () {
-                    var _this = this;
                     var id = +this._routeParams.get('id');
-                    this._heroService.getHero(id)
-                        .then(function (hero) { return _this.hero = hero; });
+                    this.store.dispatch({
+                        type: 'SELECT_HERO',
+                        payload: {
+                            id: 99, name: 'Yowza'
+                        }
+                    });
+                    // this._heroService.getHero(id)
+                    //     .then(hero => this.hero = hero);
                 };
                 HeroDetailComponent.prototype.goBack = function () {
                     window.history.back();
                 };
-                __decorate([
-                    core_1.Input(), 
-                    __metadata('design:type', hero_1.Hero)
-                ], HeroDetailComponent.prototype, "hero", void 0);
                 HeroDetailComponent = __decorate([
                     core_1.Component({
                         templateUrl: 'src/hero-detail/hero-detail.component.html',
                         styleUrls: ['src/hero-detail/hero-detail.component.css']
                     }), 
-                    __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.RouteParams])
+                    __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.RouteParams, store_1.Store])
                 ], HeroDetailComponent);
                 return HeroDetailComponent;
             }());

@@ -18,7 +18,7 @@ System.register(['angular2/platform/browser', '@ngrx/store', './store', './app/a
             }],
         execute: function() {
             browser_1.bootstrap(app_component_1.AppComponent, [
-                store_1.provideStore({ heroes: store_2.heroes }, { heroes: [] })
+                store_1.provideStore({ heroes: store_2.heroes, selectedHero: store_2.selectedHero }, { heroes: [] })
             ]).catch(function (err) { return console.error(err); });
         }
     }

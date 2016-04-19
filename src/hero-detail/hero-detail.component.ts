@@ -17,7 +17,8 @@ export class HeroDetailComponent implements OnInit {
     constructor(private _heroService: HeroService,
                 private _routeParams: RouteParams,
                 private store: Store<AppStore>) {
-        this.hero = store.select('selectedHero');
+        this.hero = this.store.select('selectedHero');
+        this.hero.subscribe(v => console.log('subscribed', v));
     }
 
     ngOnInit() {
@@ -28,9 +29,11 @@ export class HeroDetailComponent implements OnInit {
                 id: 99, name: 'Yowza'
             }
         });
+    }
 
-        // this._heroService.getHero(id)
-        //     .then(hero => this.hero = hero);
+    getHero() {
+        console.log('this hero', this.hero);
+        return this.hero;
     }
 
     goBack() {

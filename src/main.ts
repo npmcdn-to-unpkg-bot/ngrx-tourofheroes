@@ -5,8 +5,11 @@ import {heroes, selectedHero} from './store';
 import {AppComponent} from './app/app.component';
 
 bootstrap(AppComponent, [
-    provideStore({heroes, selectedHero}, {heroes: []})
-]).catch(err => console.error(err));
+    provideStore(
+        { heroes, selectedHero },
+        { heroes: [], selectedHero: {} }
+    )
+]).catch(err => console.error('Error in bootstrap', err));
 
 /*
  Copyright 2016 Google Inc. All Rights Reserved.

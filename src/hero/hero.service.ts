@@ -5,32 +5,18 @@ import {Injectable} from 'angular2/core';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs/Observable';
 
-import {AppStore} from '../store';
+import {AppStore, ADD_ITEMS, SELECT_HERO} from '../store';
 
 @Injectable()
 export class HeroService {
 
     heroes: Observable<Array<Hero>>;
+    selectedHero: Observable<Hero>;
 
     constructor(private store: Store<AppStore>) {
         this.heroes = store.select('heroes');
-    }
-
-    getHeroes() {
-        return Promise.resolve(HEROES);
-    }
-
-    // See the "Take it slow" appendix
-    getHeroesSlowly() {
-        return new Promise<Hero[]>(resolve =>
-            setTimeout(() => resolve(HEROES), 2000) // 2 seconds
-        );
-    }
-
-    getHero(id: number) {
-        return Promise.resolve(HEROES).then(
-            heroes => heroes.filter(hero => hero.id === id)[0]
-        );
+        this.selectedHero = store.select('selectedHero');
+        this.store.dispatch({type: ADD_ITEMS, payload: HEROES});
     }
 }
 

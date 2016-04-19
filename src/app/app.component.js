@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '@ngrx/store', '../hero/hero.service', '../dashboard/dashboard.component', '../heroes/heroes.component', '../hero-detail/hero-detail.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../hero/hero.service', '../dashboard/dashboard.component', '../heroes/heroes.component', '../hero-detail/hero-detail.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', '@ngrx/store', '../hero/her
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, store_1, hero_service_1, dashboard_component_1, heroes_component_1, hero_detail_component_1;
+    var core_1, router_1, hero_service_1, dashboard_component_1, heroes_component_1, hero_detail_component_1;
     var AppComponent;
     return {
         setters:[
@@ -19,9 +19,6 @@ System.register(['angular2/core', 'angular2/router', '@ngrx/store', '../hero/her
             },
             function (router_1_1) {
                 router_1 = router_1_1;
-            },
-            function (store_1_1) {
-                store_1 = store_1_1;
             },
             function (hero_service_1_1) {
                 hero_service_1 = hero_service_1_1;
@@ -37,10 +34,8 @@ System.register(['angular2/core', 'angular2/router', '@ngrx/store', '../hero/her
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent(store) {
-                    this.store = store;
+                function AppComponent() {
                     this.title = 'Tour of Heroes';
-                    this.heroes = store.select('heroes');
                 }
                 AppComponent = __decorate([
                     core_1.Component({
@@ -71,7 +66,7 @@ System.register(['angular2/core', 'angular2/router', '@ngrx/store', '../hero/her
                             component: heroes_component_1.HeroesComponent
                         }
                     ]), 
-                    __metadata('design:paramtypes', [store_1.Store])
+                    __metadata('design:paramtypes', [])
                 ], AppComponent);
                 return AppComponent;
             }());

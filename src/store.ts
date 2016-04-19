@@ -5,15 +5,14 @@ export interface AppStore {
     heroes: Array<Hero>;
 }
 
-export const INCREMENT = 'INCREMENT';
-
-import {HEROES} from './hero/mock-heroes';
+export const ADD_ITEMS = 'ADD_ITEMS';
+export const SELECT_HERO = 'SELECT_HERO';
 
 export const heroes: Reducer<Hero> = (state: any = [], { type, payload }) => {
 
     switch (type) {
-        case INCREMENT:
-            return HEROES;
+        case ADD_ITEMS:
+            return payload;
         default:
             return state;
     }
@@ -21,8 +20,7 @@ export const heroes: Reducer<Hero> = (state: any = [], { type, payload }) => {
 
 export const selectedHero = (state: any = null, {type, payload}) => {
     switch (type) {
-        case 'SELECT_HERO':
-            console.log('Selected Here', type, payload);
+        case SELECT_HERO:
             return payload;
         default:
             return state;

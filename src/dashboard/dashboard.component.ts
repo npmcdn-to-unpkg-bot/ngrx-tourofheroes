@@ -1,5 +1,7 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, OnInit, ChangeDetectionStrategy} from 'angular2/core';
 import {Router} from 'angular2/router';
+
+import {Observable} from 'rxjs/Observable';
 
 import {Hero} from '../hero/hero';
 import {HeroService} from '../hero/hero.service';
@@ -7,23 +9,23 @@ import {HeroService} from '../hero/hero.service';
 @Component({
     selector: 'my-dashboard',
     templateUrl: 'src/dashboard/dashboard.component.html',
-    styleUrls: ['src/dashboard/dashboard.component.css']
+    styleUrls: ['src/dashboard/dashboard.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent implements OnInit {
 
-    heroes: Hero[] = [];
+    heroes: Observable<Array<Hero>>;
 
     constructor(private _router: Router,
                 private _heroService: HeroService) {
     }
 
     ngOnInit() {
-        this._heroService.getHeroes()
-            .then(heroes => this.heroes = heroes.slice(1, 5));
+        this.heroes = this._heroService.heroes;
     }
 
     gotoDetail(hero: Hero) {
-        let link = ['HeroDetail', { id: hero.id }];
+        const link = ['HeroDetail', { id: hero.id }];
         this._router.navigate(link);
     }
 }

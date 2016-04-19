@@ -28,12 +28,9 @@ System.register(['angular2/core', 'angular2/router', '../hero/hero.service'], fu
                 function DashboardComponent(_router, _heroService) {
                     this._router = _router;
                     this._heroService = _heroService;
-                    this.heroes = [];
                 }
                 DashboardComponent.prototype.ngOnInit = function () {
-                    var _this = this;
-                    this._heroService.getHeroes()
-                        .then(function (heroes) { return _this.heroes = heroes.slice(1, 5); });
+                    this.heroes = this._heroService.heroes;
                 };
                 DashboardComponent.prototype.gotoDetail = function (hero) {
                     var link = ['HeroDetail', { id: hero.id }];
@@ -43,7 +40,8 @@ System.register(['angular2/core', 'angular2/router', '../hero/hero.service'], fu
                     core_1.Component({
                         selector: 'my-dashboard',
                         templateUrl: 'src/dashboard/dashboard.component.html',
-                        styleUrls: ['src/dashboard/dashboard.component.css']
+                        styleUrls: ['src/dashboard/dashboard.component.css'],
+                        changeDetection: core_1.ChangeDetectionStrategy.OnPush
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, hero_service_1.HeroService])
                 ], DashboardComponent);

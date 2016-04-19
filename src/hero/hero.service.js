@@ -1,4 +1,4 @@
-System.register(['./mock-heroes', 'angular2/core', '@ngrx/store'], function(exports_1, context_1) {
+System.register(['./mock-heroes', 'angular2/core', '@ngrx/store', '../store'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['./mock-heroes', 'angular2/core', '@ngrx/store'], function(expo
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var mock_heroes_1, core_1, store_1;
+    var mock_heroes_1, core_1, store_1, store_2;
     var HeroService;
     return {
         setters:[
@@ -22,27 +22,18 @@ System.register(['./mock-heroes', 'angular2/core', '@ngrx/store'], function(expo
             },
             function (store_1_1) {
                 store_1 = store_1_1;
+            },
+            function (store_2_1) {
+                store_2 = store_2_1;
             }],
         execute: function() {
             HeroService = (function () {
                 function HeroService(store) {
                     this.store = store;
                     this.heroes = store.select('heroes');
+                    this.selectedHero = store.select('selectedHero');
+                    this.store.dispatch({ type: store_2.ADD_ITEMS, payload: mock_heroes_1.HEROES });
                 }
-                HeroService.prototype.getHeroes = function () {
-                    return Promise.resolve(mock_heroes_1.HEROES);
-                };
-                // See the "Take it slow" appendix
-                HeroService.prototype.getHeroesSlowly = function () {
-                    return new Promise(function (resolve) {
-                        return setTimeout(function () { return resolve(mock_heroes_1.HEROES); }, 2000);
-                    } // 2 seconds
-                     // 2 seconds
-                    );
-                };
-                HeroService.prototype.getHero = function (id) {
-                    return Promise.resolve(mock_heroes_1.HEROES).then(function (heroes) { return heroes.filter(function (hero) { return hero.id === id; })[0]; });
-                };
                 HeroService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [store_1.Store])
